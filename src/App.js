@@ -1,12 +1,13 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 
-const Cards = () => {
+const Cards = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [cards, setCards] = useState([
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
   ]);
+  const [clickedCards, setClickedCards] = useState([]);
 
   function shuffle(array) {
     let currentIndex = array.length,
@@ -24,16 +25,23 @@ const Cards = () => {
     return array;
   }
 
-  function currentScoreIncrement() {
-    setCurrentScore(currentScore + 1);
+  function currentScoreIncrement(e) {
+    if (!clickedCards.includes(e.target.id)) {
+      setCurrentScore(currentScore + 1);
+      setClickedCards([...clickedCards, e.target.id]);
+    } else {
+      setCurrentScore(0);
+      setClickedCards([]);
+    }
   }
 
   function handleCardClick(e) {
-    currentScoreIncrement();
+    currentScoreIncrement(e);
   }
 
   useEffect(() => {
     setCards(shuffle(cards));
+    console.log(clickedCards);
   });
 
   return (
