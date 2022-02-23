@@ -5,7 +5,15 @@ const Cards = (props) => {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [cards, setCards] = useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+    "https://gtspirit.com/wp-content/uploads/2021/06/02_hispeed_css-e1624431465349.jpg",
+    "https://stimg.cardekho.com/images/carexteriorimages/630x420/Lamborghini/Aventador/6721/Lamborghini-Aventador-SVJ/1621849426405/front-left-side-47.jpg?tr=w-135",
+    "https://cdn.motor1.com/images/mgl/2Y3bx/s1/mclaren-p1.jpg",
+    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2021-mercedes-amg-gt-black-series-118-1601842340.jpg?crop=0.817xw:0.612xh;0.183xw,0.281xh&resize=1200:*",
+    "https://cdn.motor1.com/images/mgl/VA0z9/s1/tesla-roadster.webp",
+    "https://cdn.motor1.com/images/mgl/6yPGX/s1/2021-dodge-charger-srt-hellcat-redeye.jpg",
+    "https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/17q1/674191/2017-bentley-continental-supersports-revealed-news-car-and-driver-photo-674309-s-original.jpg?fill=2:1&resize=1200:*",
+    "https://www.topgear.com/sites/default/files/images/news-article/2019/01/dfeb7f2af3355f55796bda3e86b8d6ed/row_9371.jpg",
+    "https://media.autoexpress.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1579701747/autoexpress/2019/06/01_14.jpg",
   ]);
   const [clickedCards, setClickedCards] = useState([]);
 
@@ -60,14 +68,13 @@ const Cards = (props) => {
       <div id="grid-container">
         <div id="cards-grid">
           {cards.map((card) => (
-            <div
+            <img
               className="card-item"
-              key={card}
-              id={card}
+              src={card}
               onClick={handleCardClick}
-            >
-              {card}
-            </div>
+              id={card}
+              key={card}
+            ></img>
           ))}
         </div>
       </div>
