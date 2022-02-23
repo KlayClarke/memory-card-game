@@ -25,11 +25,18 @@ const Cards = (props) => {
     return array;
   }
 
+  function checkForHighScore() {
+    if (currentScore > highScore) {
+      setHighScore(currentScore);
+    }
+  }
+
   function currentScoreIncrement(e) {
     if (!clickedCards.includes(e.target.id)) {
       setCurrentScore(currentScore + 1);
       setClickedCards([...clickedCards, e.target.id]);
     } else {
+      checkForHighScore();
       setCurrentScore(0);
       setClickedCards([]);
     }
@@ -46,7 +53,10 @@ const Cards = (props) => {
 
   return (
     <div>
-      <div id="score">Current score: {currentScore}</div>
+      <div id="score">
+        Current Score: {currentScore} <br />
+        High Score: {highScore}
+      </div>
       <div id="grid-container">
         <div id="cards-grid">
           {cards.map((card) => (
