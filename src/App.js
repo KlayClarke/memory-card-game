@@ -1,9 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 
-const Cards = (props) => {
-  const [currentScore, setCurrentScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+const Cards = ({ currentScore, highScore, setCurrentScore, setHighScore }) => {
   const [cards, setCards] = useState([
     "https://gtspirit.com/wp-content/uploads/2021/06/02_hispeed_css-e1624431465349.jpg",
     "https://stimg.cardekho.com/images/carexteriorimages/630x420/Lamborghini/Aventador/6721/Lamborghini-Aventador-SVJ/1621849426405/front-left-side-47.jpg?tr=w-135",
@@ -61,10 +59,6 @@ const Cards = (props) => {
 
   return (
     <div>
-      <div id="score">
-        Current Score: {currentScore} <br />
-        High Score: {highScore}
-      </div>
       <div id="grid-container">
         <div id="cards-grid">
           {cards.map((card) => (
@@ -82,10 +76,31 @@ const Cards = (props) => {
   );
 };
 
+const GameBoard = () => {
+  const [currentScore, setCurrentScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+  return (
+    <div>
+      <div id="score">
+        Current Score: {currentScore} <br />
+        High Score: {highScore}
+      </div>
+      <div>
+        <Cards
+          currentScore={currentScore}
+          highScore={highScore}
+          setCurrentScore={setCurrentScore}
+          setHighScore={setHighScore}
+        />
+      </div>
+    </div>
+  );
+};
+
 const App = () => {
   return (
     <div id="main-container">
-      <Cards />
+      <GameBoard />
     </div>
   );
 };
